@@ -1,0 +1,57 @@
+<div class="content-container">
+    <div class="center-text"><h2 class="heading">About</h2></div>
+
+    <div class="inner-content">
+    <button class="rounded-btn add-btn"(click)="setEditEntry(null)">Create Entry</button>
+
+    <div *ngIf="whatWeDo">
+        <div>
+            <h3>{{whatWeDo.title}}</h3>
+        </div>
+        <p class="keep-newlines">{{whatWeDo.content}}</p>
+        <button class="link-btn edit-btn"(click)="setEditEntry(whatWeDo)">Edit</button>
+        <button class="link-btn delete-btn">Delete</button>
+    </div>
+
+    <button class="rounded-btn add-btn"(click)="setEditPerson(null)">Add Person</button>
+    <h3>Who we are</h3>
+    <ul class="plain-list horizontal-list">
+        <li *ngFor="let person of people">
+            <div class="fade-box">
+                <h4>{{person.name}}</h4>
+                <p>{{person.year}}</p>
+                <p>{{person.major}}</p>
+            </div>
+            <img src="">
+
+            <button class="link-btn edit-btn"(click)="setEditPerson(person)">Edit</button>
+        </li>
+    </ul>
+
+    <div *ngIf="contact">
+        <div>
+            <h3>{{contact.title}}</h3>
+        </div>
+        <p class="keep-newlines">{{contact.content}}</p>
+        <button class="link-btn edit-btn"(click)="setEditEntry(contact)">Edit</button>
+        <button class="link-btn delete-btn">Delete</button>
+    </div>
+
+
+
+    <!--
+    <ul class="plain-list">
+        <li *ngFor="let entry of entries">
+            <div class="clearfix">
+                <h3>{{entry.title}}</h3>
+            </div>
+            <p class="keep-newlines">{{entry.content}}</p>
+            <button class="link-btn edit-btn"(click)="setUpdateEntry(entry)">Edit</button>
+            <button class="link-btn delete-btn">Delete</button>
+        </li>
+    </ul>
+-->
+    </div>
+</div>
+<edit-about *ngIf="isEditEntry()" (close)="close($event)" [entry]="entryToEdit"></edit-about>
+<edit-person *ngIf="isEditPerson()" (close)="close($event)" [person]="personToEdit"></edit-person>

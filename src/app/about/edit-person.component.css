@@ -1,0 +1,11 @@
+label, input {
+    display: inline-block;
+}
+label {
+    min-width: 50px;
+    width: 15%;
+}
+input {
+    min-width: 100px;
+    width: 80%;
+}

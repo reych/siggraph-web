@@ -1,1 +1,309 @@
 /* You can add global styles to this file, and also import other style files */
+/* ----[ Base Styles ]---- */
+*{
+	box-sizing:border-box;
+}
+html{
+	/*for sticky bg-footer*/
+	min-height: 100%;
+}
+body{
+	margin: 0;
+	font: 100% sans-serif;
+	padding: 0;
+	/*background-color: #2F5C5A;/* 3A6B69; /*#00A37A;*/
+	/*background-color: #1B485C;*/
+}
+/* Headings */
+header{
+	margin: 0;
+	padding: 0;
+	font-size: 100%;
+}
+.media-heading {
+	margin:0;
+}
+.media-heading a{
+	text-decoration: none;
+	color: #006B8F;
+	margin:0;
+}
+.header-navigation{
+	background: #001A33;
+	margin: auto;
+	min-height: 2.5em;
+	padding: .1em 0;
+}
+/* Lists */
+.d-horizontal-list, .horizontal-list{
+	padding-left: 0;
+}
+.d-horizontal-list li, .horizontal-list li{
+	list-style-type: none;
+	padding: 0;
+}
+.header-navigation a{
+	color: #FFF;
+	text-decoration: none;
+}
+.social-media-bar li {
+	padding: 0 .5em;
+}
+.media-icon {
+	width: 20px;
+	length: 20px;
+}
+.plain-list {
+	padding-left: 0;
+}
+.plain-list li {
+	list-style-type: none;
+}
+/* Content boxes */
+.overall-container {
+	margin: 0 auto;
+}
+.content-container {
+	background: #FFF;
+	padding: .5em;
+	padding-left: 50px;
+    padding-right: 50px;
+
+}
+.inner-content {
+	margin: .5em;
+}
+.logo-splash {
+	display:none;
+	width: 100%;
+	height:650px;
+	background-color: red;
+	text-align: center;
+	padding: .5em;
+	background-image: url('assets/forest.jpg');
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+.textbox-2 {
+	padding: .5em;
+}
+/* Gallery */
+.img-container{
+	background-color: #F2F2F2;
+	padding: .5em;
+	max-width: 18em;
+	margin: 2em 1em;
+}
+.img-container img{
+	max-width: 15em;
+}
+
+footer{
+	margin: auto;
+	text-align: center;
+}
+
+.center-text {
+	text-align: center;
+}
+
+/* animation and other effects */
+.d-horizontal-list li :hover{
+	background-color: #667685;
+}
+a{
+	text-decoration: none;
+}
+/* Buttons */
+.link-btn {
+	background-color: transparent;
+	cursor: pointer;
+	border: none;
+}
+.rounded-btn {
+    height: 3em;
+    width: 5em;
+    border: none;
+    border-radius: 4px;
+    background-color: #119DA4;
+    color: white;
+    font-size: 16px;
+    font-weight: normal;
+    cursor: pointer;
+}
+.rounded-btn:hover, .rounded-btn:active {
+    background-color: #0a585c;
+}
+.edit-btn, .delete-btn {
+	font-size: 16px;
+}
+.edit-btn {
+	color: #3acdff;
+}
+.edit-btn:hover {
+	color: #217a99;
+}
+.delete-btn {
+	color: #cc4000;
+}
+.delete-btn:hover {
+	color: #722400;
+}
+.add-btn {
+	width: auto;
+}
+/* Others */
+.keep-newlines {
+	white-space: pre-wrap;
+}
+
+/* Modal */
+.modal-thing {
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+.modal-thing input, .modal-thing select, .modal-thing textarea{
+    border-radius: 4px;
+    border: 1px solid #333;
+    width: 100%;
+    padding: 5px;
+    font-size: 16px;
+    color: #333;
+}
+.modal-thing textarea {
+    vertical-align: text-top;
+    height: 8em;
+}
+.modal-thing label {
+    font-weight: normal;
+    font-size: 16px;
+    color: #333;
+    display: block;
+}
+.form-table {
+    color: #222;
+    font-size: 20px;
+    font-family: "Helvetica Neue", sans-serif;
+    margin: auto;
+    text-align: left;
+}
+.form-table .row {
+    padding-bottom: 1em;
+}
+.edit-box {
+    padding: 1em;
+    border-radius: 4px;
+    background-color:white;
+    width: 50%;
+    max-width: 600px;
+    min-width: 400px;
+    text-align: center;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+}
+/* ----[ 20em (320 px and up, iphone) ]---- */
+@media only screen and (min-width: 20em){
+	body{
+		/*background-image: url("../bg4.png");*/
+	}
+	header{
+		text-align: center;
+	}
+	.overall-container{
+		width: 100%;
+	}
+	.header-navigation{
+		text-align: center;
+		line-height: 2;
+	}
+	.d-horizontal-list li{
+		display: block;
+		list-style-type: none;
+	}
+	.horizontal-list li {
+		display: inline-block;
+	}
+
+
+}
+
+
+/* ----[ 30em (480px and up, computer screen)]---- */
+@media only screen and (min-width: 36em){
+	header{
+		text-align: left;
+	}
+	.overall-container{
+		min-width: 65.56em;
+
+	}
+	.header-navigation{
+		text-align: left;
+		text-decoration: none;
+		width: 100%;
+	}
+	.header-navigation ul{
+		padding-left: 2em;
+	}
+	.d-horizontal-list li, .horizontal-list li{
+		display: inline-block;
+		height: 2em;
+	}
+	.header-navigation a{
+		padding: 1.5em 1em;
+		max-height: 100%;
+	}
+	.social-media-bar li {
+		padding: 0;
+	}
+	.social-media-bar a{
+		padding-left: .5em;
+		margin: 0;
+	}
+	.logo-splash {
+		display: block;
+	}
+	.textbox-2 {
+		width:50%;
+		display: inline-block;
+	}
+	.right {
+		float: right;
+	}
+	.left {
+		float: left;
+	}
+
+	/* clear float */
+	.clearfix:before,
+	.clearfix:after{
+		content:" ";
+		display: table;
+	}
+	.clearfix:after{
+		clear:both;
+	}
+	.clearfix{
+		*zoom:1;
+	}
+
+	/* Gallery */
+	.gallery-grid .img-container{
+		display: inline-block;
+		vertical-align: middle;
+	}
+
+	.img-container img{
+		max-width: 17em;
+	}
+}

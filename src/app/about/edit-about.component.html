@@ -1,0 +1,17 @@
+<div class="modal-thing">
+<div class="edit-box">
+    <h2>Edit Entry</h2>
+    <div class="form-table">
+        <div class="row">
+            <label>Title:</label>
+            <input [(ngModel)]="entry.title">
+        </div>
+        <div class="row">
+            <label>Content:</label>
+            <textarea [(ngModel)]="entry.content"></textarea>
+        </div>
+    </div>
+    <button class="cancel-btn rounded-btn" (click)="closeWindow()">Cancel</button>
+    <button class="save-btn rounded-btn" (click)="save()">Save</button>
+</div>
+</div>

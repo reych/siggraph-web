@@ -5,4 +5,12 @@
 
 export const environment = {
   production: false
+  // firebase: {
+  //     apiKey: "AIzaSyAfEO28OnRz4jzLsIhzqfwX3hbylyBvQ_k",
+  //     authDomain: "siggraph-cc3ef.firebaseapp.com",
+  //     databaseURL: "https://siggraph-cc3ef.firebaseio.com",
+  //     projectId: "siggraph-cc3ef",
+  //     storageBucket: "siggraph-cc3ef.appspot.com",
+  //     messagingSenderId: "474234133891"
+  // }
 };

@@ -1,0 +1,17 @@
+<div class="content-container">
+    <div class="center-text"><h2 class="heading">Events</h2></div>
+    <button class="rounded-btn add-btn" (click)="setCreateEvent()">Add Event</button>
+    <ul class="plain-list">
+        <li *ngFor="let event of events" class="badge">
+            <div class="clearfix">
+                <h3 class="left">{{event.title}}</h3>
+                <small class="right">Updated: {{formatDate(event.updateTime)}}</small>
+            </div>
+            <p>{{formatDate(event.date)}} | {{event.time}} | {{event.location}}</p>
+            <p class="keep-newlines">{{event.content}}</p>
+            <button class="link-btn edit-btn" (click)="setUpdateEvent(event)">Edit</button>
+            <button class="link-btn delete-btn" (click)="delete(event.eventId)">Delete</button>
+        </li>
+    </ul>
+</div>
+<edit-event *ngIf="editEvent" (close)="close($event)" [event]="eventToEdit"></edit-event>
