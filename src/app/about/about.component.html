@@ -18,11 +18,13 @@
     <ul class="plain-list horizontal-list">
         <li *ngFor="let person of people">
             <div class="fade-box">
-                <h4>{{person.name}}</h4>
-                <p>{{person.year}}</p>
-                <p>{{person.major}}</p>
+                <div class="info-box">
+                    <h4>{{person.name}}</h4>
+                    <p>{{person.year}}</p>
+                    <p>{{person.major}}</p>
+                </div>
+                <img class="img-box" [src]= "person.imageURL">
             </div>
-            <img src="">
 
             <button class="link-btn edit-btn"(click)="setEditPerson(person)">Edit</button>
         </li>

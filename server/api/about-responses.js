@@ -37,14 +37,14 @@ function person(name, year, major, position, quote, imageURL) {
 
 var storage = multer.diskStorage({
     destination: function (req, file, cb) {
-        cb(null, '../uploads')
+        cb(null, '../public/profile-uploads/')
     },
     filename: function (req, file, cb) {
         cb(null, file.fieldname + '-' + Date.now() + '.jpg')
     }
 });
 
-var upload = multer({ storage: storage }).single('profileImage');
+var upload = multer({ storage: storage }).single('profile');
 
 // whatever
 function multerUpload(req, res) {
@@ -154,6 +154,19 @@ router.put('/update-person', (req, res) => {
     })
     .catch((err) => {
         res.status(400).send({err: err.message});
+    })
+})
+
+// Upload an image and send back the filename.
+router.post('/image/upload', (req, res) => {
+    upload(req, res, function (err) {
+        if (err) {
+            console.log("Error uploading image...")
+            res.status(400).send({err: err.message});
+        } else {
+            console.log("Creating new person...")
+            res.status(200).send(req.file.filename);
+        }
     })
 })
 

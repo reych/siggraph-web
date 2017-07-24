@@ -17,6 +17,7 @@ import { EventService, AboutService, ReversePipe } from './utils/index';
 
 // External Libraries
 import { NgxMyDatePickerModule } from 'ngx-mydatepicker';
+import { FileSelectDirective } from 'ng2-file-upload';
 
 // Firebase
 // import { AngularFireModule } from 'angularfire2';
@@ -37,7 +38,8 @@ import { SponsorsComponent } from './sponsors/sponsors.component';
     AboutComponent,
     EditAboutComponent,
     SponsorsComponent,
-    EditPersonComponent
+    EditPersonComponent,
+    FileSelectDirective
   ],
   imports: [
     BrowserModule,
