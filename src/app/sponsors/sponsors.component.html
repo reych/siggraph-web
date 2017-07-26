@@ -3,13 +3,12 @@
     <p>Be our sponsor!</p>
     <button class="rounded-btn add-btn" (click)="setCreateEvent()">Add Sponsor</button>
     <ul class="plain-list">
-        <li *ngFor="let event of events" class="badge">
+        <li *ngFor="let sponsor of sponsors" class="badge">
             <div class="clearfix">
-                <h3 class="left">{{event.title}}</h3>
-                <small class="right">Updated: {{formatDate(event.updateTime)}}</small>
+                <h3 class="left">{{sponsor.name}}</h3>
             </div>
-            <p>{{formatDate(event.date)}} | {{event.time}} | {{event.location}}</p>
-            <p class="keep-newlines">{{event.content}}</p>
+            <p>{{sponsor.link}} | {{sponsor.imageurl}}</p>
+            <p class="keep-newlines">{{sponsor.description}}</p>
             <button class="link-btn edit-btn" (click)="setUpdateEvent(event)">Edit</button>
             <button class="link-btn delete-btn" (click)="delete(event.eventId)">Delete</button>
         </li>

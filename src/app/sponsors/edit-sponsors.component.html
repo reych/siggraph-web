@@ -1,5 +1,5 @@
 <div class="modal-thing">
-<div class="edit-box" *ngIf="event">
+<div class="edit-box" *ngIf="sponsor">
     <button class="close-btn" (click)="closeWindow()">X</button>
     <h2>{{heading}}</h2>
     <p>{{quote}}</p>
@@ -11,26 +11,33 @@
                 <label>Sponsor Name:</label>
             </div>
             <div class="col-sm-8">
-                <input [(ngModel)]="proxyEvent.name">
+                <input [(ngModel)]="proxySponsor.name">
             </div>
         </div>
         <div class="row">
             <div class="col-sm-4">
-                <label>Content:</label>
+                <label>Description:</label>
             </div>
             <div class="col-sm-8">
-                <textarea [(ngModel)]="proxyEvent.content"></textarea>
+                <textarea [(ngModel)]="proxySponsor.description"></textarea>
             </div>
         </div>
         <div class="row">
             <div class="col-sm-4">
-                <label>Thumbnail:</label>
+                <label>Link:</label>
             </div>
             <div class="col-sm-8">
-                <input type="file" [(ngModel)]="proxyEvent.imageURL">
+                <textarea [(ngModel)]="proxySponsor.link"></textarea>
             </div>
         </div>
-
+        <div class="row">
+            <div class="col-sm-4">
+                <label>Image URL:</label>
+            </div>
+            <div class="col-sm-8">
+                <textarea [(ngModel)]="proxySponsor.imageurl"></textarea>
+            </div>
+        </div>
     </div>
         <button class="cancel-btn rounded-btn" (click)="closeWindow()">Cancel</button>
         <button class="save-btn rounded-btn" (click)="save()">Save</button>
