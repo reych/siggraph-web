@@ -26,7 +26,7 @@ export class SponsorService {
       .catch(this.handleError);
   }
 
-  save(sponsor: Sponsor) {
+  save(sponsor: Sponsor): Promise<Sponsor> {
     if(sponsor.id) {
       console.log("Putting");
       return this.put(sponsor);
@@ -61,7 +61,7 @@ export class SponsorService {
       return this.http
           .put(url, JSON.stringify(sponsor), {headers: this.headers})
           .toPromise()
-          .then(() => event)
+          .then(() => sponsor)
           .catch(this.handleError);
   }
 
