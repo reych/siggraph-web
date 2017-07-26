@@ -13,7 +13,11 @@ import {INgxMyDpOptions, IMyDateModel} from 'ngx-mydatepicker';
 
 export class EditSponsorComponent implements OnInit{
     @Input()
+<<<<<<< HEAD
     sponsor: Sponsor;
+=======
+    event: Event;
+>>>>>>> 625a21741228cdaf31f34ed0a6887330df2d59f4
 
     @Output()
     close = new EventEmitter();
@@ -58,7 +62,11 @@ export class EditSponsorComponent implements OnInit{
 
     // Close window.
     closeWindow() {
+<<<<<<< HEAD
         this.close.emit(event);
+=======
+        this.close.emit(sponsor);
+>>>>>>> 625a21741228cdaf31f34ed0a6887330df2d59f4
     }
 
     /* ------------------------ [ Helper functions ] ------------------------ */
