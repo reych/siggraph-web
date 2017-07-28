@@ -1,8 +1,13 @@
 <div class="content-container">
     <div class="center-text"><h2 class="center">Gallery</h2></div>
+    <button (click)="setEditPost(null)">Add post</button>
         <div class="gallery-container">
             <div *ngFor = "let image of images" class="gallery-entry">
-                <img src={{image}}>
+                <img [src]="image.imageURL">
+                <p>{{image.title}} | {{image.eventName}} | {{image.caption}}</p>
+                <button (click)="setEditPost(image)">Edit</button>
+                <button>Delete</button>
             </div>
         </div>
 </div>
+<edit-gallery-post *ngIf="isEditPost()" [galleryPost]="postToEdit" (close)="close($event)"></edit-gallery-post>

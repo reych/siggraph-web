@@ -7,12 +7,6 @@ import { EventService } from '../utils/event.service';
 let date = new Date().valueOf();
 let updateTime = new Date().valueOf();
 
-const EVENTS: Event[] = [
-  { title: 'Event 1', date: date, time: "7:00", location: "ABC", content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.', imageURL: "", updateTime: updateTime, eventId: 0},
-  { title: 'Event 2', date: date, time: "7:00", location: "ABC", content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.', imageURL: "", updateTime: updateTime, eventId: 1},
-  { title: 'Event 3', date: date, time: "7:00", location: "ABC", content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.', imageURL: "", updateTime: updateTime, eventId: 2}
-];
-
 @Component({
     selector: 'events',
     templateUrl: './events.component.html',

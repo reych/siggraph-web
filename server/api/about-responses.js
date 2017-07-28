@@ -46,19 +46,6 @@ var storage = multer.diskStorage({
 
 var upload = multer({ storage: storage }).single('profile');
 
-// whatever
-function multerUpload(req, res) {
-    upload(req, res, function (err) {
-        if (err) {
-            console.log("Error uploading image...")
-            res.status(400).send({err: err.message});
-        } else {
-            console.log("Creating new person...")
-
-        }
-    })
-}
-
 function uploadImage(filepath) {
     console.log("uploading image...");
     var tempPath = filepath;
@@ -157,6 +144,14 @@ router.put('/update-person', (req, res) => {
     })
 })
 
+router.delete('/person/delete/:id', (req, res) => {
+    People.findOneAndRemove({'id': req.params.id})
+    .then((data) => res.status(200).send(null))
+    .catch((err) => {
+        res.status(400).send({error:err.message});
+    })
+})
+
 // Upload an image and send back the filename.
 router.post('/image/upload', (req, res) => {
     upload(req, res, function (err) {
@@ -168,6 +163,11 @@ router.post('/image/upload', (req, res) => {
             res.status(200).send(req.file.filename);
         }
     })
+})
+
+// Delete an image.
+router.post('/image/delete/:path', (req, res) => {
+
 })
 
 module.exports = router;

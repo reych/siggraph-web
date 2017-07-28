@@ -6,5 +6,6 @@ export class Event {
     content: string;
     imageURL: string;
     updateTime: number; // milliseconds since UNIX epoch
+    link: string; // Outside link.
     eventId: number;
 }
