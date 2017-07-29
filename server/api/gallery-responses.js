@@ -88,7 +88,12 @@ router.delete('/delete/:id', (req, res) => {
     // TODO: Delete image at imageURL from uploads too.
     // TODO: Does this _id really work?
     GalleryPosts.findOneAndRemove({'id': req.params.id})
-    .then((data) => res.status(200).send(null))
+    .then((data) => {
+        // Delete the image file.
+        let path = '../../public/'+data.imageURL;
+        fs.unlinkSync(require.resolve(path));
+        res.status(200).send(null)}
+    )
     .catch((err) => {
         res.status(400).send({error:err.message});
     })

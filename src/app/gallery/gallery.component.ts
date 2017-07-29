@@ -39,6 +39,15 @@ export class GalleryComponent implements OnInit {
         return this.editPost;
     }
 
+    delete(id: number): void {
+        this.galleryService
+        .delete(id)
+        .then(() => {
+            this.images = this.images.filter(image => image != image);
+            this.loadImages();
+        });
+    }
+
     close() {
         this.postToEdit = null;
         this.editPost = false;

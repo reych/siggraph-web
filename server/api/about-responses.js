@@ -167,7 +167,11 @@ router.post('/image/upload', (req, res) => {
 
 // Delete an image.
 router.post('/image/delete/:path', (req, res) => {
-
+    // Delete existing profile picture.
+    if(path != null) {
+        let path = '../../public/'+path;
+        fs.unlinkSync(require.resolve(path));
+    }
 })
 
 module.exports = router;

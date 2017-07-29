@@ -6,7 +6,7 @@
                 <img [src]="image.imageURL">
                 <p>{{image.title}} | {{image.eventName}} | {{image.caption}}</p>
                 <button (click)="setEditPost(image)">Edit</button>
-                <button>Delete</button>
+                <button (click)="delete(image.id)">Delete</button>
             </div>
         </div>
 </div>
