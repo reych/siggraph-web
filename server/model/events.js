@@ -8,6 +8,7 @@ const eventsSchema = new mongoose.Schema({
     content: String,
     imageURL: String,
     updateTime: Number,
+    link: String,
     eventId: Number
 });
 

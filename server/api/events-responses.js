@@ -8,7 +8,7 @@ const router = express.Router();
 
 /* --------------------------- [ Helper Functions ] ------------------------- */
 // Create an Event object with given parameters.
-function eventPost(title, date, time, location, content, imageURL, updateTime) {
+function eventPost(title, date, time, location, content, imageURL, updateTime, link) {
     let id = new Date().valueOf();
     return {
         title: title,
@@ -18,6 +18,7 @@ function eventPost(title, date, time, location, content, imageURL, updateTime) {
         content: content,
         imageURL: imageURL,
         updateTime: updateTime,
+        link: link,
         eventId: id
     };
 };
@@ -67,7 +68,7 @@ router.get('/past', (req, res) => {
 router.post('/add', (req, res) => {
     console.log("Post: Adding event");
     let updateTime = new Date().valueOf();
-    let newEvent = new eventPost(req.body.title, req.body.date, req.body.time, req.body.location, req.body.content, req.body.imageURL, updateTime);
+    let newEvent = new eventPost(req.body.title, req.body.date, req.body.time, req.body.location, req.body.content, req.body.imageURL, updateTime, req.body.link);
     Events.create(newEvent, (err, eventPost) => {
         if (err) {
             res.status(400).send({error: err.message});

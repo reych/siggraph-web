@@ -9,6 +9,7 @@
             </div>
             <p>{{formatDate(event.date)}} | {{event.time}} | {{event.location}}</p>
             <p class="keep-newlines">{{event.content}}</p>
+            <p *ngIf="event.link"><a [href]="event.link" class="link-href-btn">Visit Facebook page</a></p>
             <button class="link-btn edit-btn" (click)="setUpdateEvent(event)">Edit</button>
             <button class="link-btn delete-btn" (click)="delete(event.eventId)">Delete</button>
         </li>

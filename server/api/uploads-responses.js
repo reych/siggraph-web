@@ -1,4 +1,4 @@
-const express = require('espress');
+const express = require('express');
 const multer = require('multer');
 
 const router = express.Router();
@@ -12,16 +12,33 @@ var storage = multer.diskStorage({
     }
 });
 
-var upload = multer({ storage: storage }).single('profileImage');
+var upload = multer({ storage: storage }).single('photo');
 
 router.post('/', (req, res) => {
     upload(req, res, function (err) {
         if (err) {
-            console.log("Error uploading image...")
+            console.log("Error uploading image...");
             res.status(400).send({err: err.message});
         } else {
-            console.log("Success uploading image...")
+            console.log("Success uploading image...");
+            console.log(req.file.filename);
 
         }
     })
 })
+
+router.get('/get', (req, res) => {
+    var options = {
+        root: __dirname + '/server/uploads/'
+    }
+
+    res.sendFile(req.body.name, options, (err) => {
+        if(err) {
+            console.log("Error getting image...");
+        } else {
+            console.log("Success getting image...");
+        }
+    })
+})
+
+module.exports = router;

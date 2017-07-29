@@ -30,12 +30,14 @@ app.use(bodyParser.urlencoded({ extended: false }));
 // Static path to dist.
 app.use(express.static(path.join(__dirname, '..', 'dist')));
 
-// Path to save files.
-//app.use(bodyParser({uploadDir:'/uploads'}));
+// Static path to public.
+app.use(express.static(path.join(__dirname, '..', 'public')));
 
 // API routes.
 app.use('/api/events', require('./api/events-responses'));
 app.use('/api/about', require('./api/about-responses'));
+app.use('/api/gallery', require('./api/gallery-responses'));
+app.use('/api/uploads', require('./api/uploads-responses'));
 
 // Catch other routes.
 app.get('*', (req, res) => {

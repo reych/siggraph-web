@@ -8,3 +8,36 @@ li {
 }
 .content-container {
 }
+
+.fade-box {
+    position: relative;
+    display: block;
+    width: 200px;
+    height: 300px;
+    background: #EEE;
+    margin: 10px;
+    margin-top: 0px;
+}
+
+.fade-box .info-box {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: #EEE;
+    z-index: 10;
+    transition: all 0.2s ease-in-out;
+    opacity: 0;
+    padding: 10px;
+}
+
+.fade-box .info-box:hover{
+    opacity: 1;
+}
+
+.fade-box .img-box {
+    height: auto;
+    max-width: 100%;
+    max-height: 100%;
+}

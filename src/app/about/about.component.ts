@@ -5,12 +5,19 @@ import { Entry } from '../model/entry';
 import { Person } from '../model/person';
 import { AboutService } from '../utils/about.service';
 
+import {  FileUploader } from 'ng2-file-upload/ng2-file-upload';
+
+const URL = 'http://localhost:3000/api/uploads/';
+
 @Component({
   selector: 'app-about',
   templateUrl: './about.component.html',
   styleUrls: ['./about.component.css']
 })
 export class AboutComponent implements OnInit {
+    // File upload.
+    uploader:FileUploader = new FileUploader({url: URL, itemAlias: 'photo'});
+
     // State.
     //private editEntry: boolean = false;
     private EDIT_ENTRY = 1;
@@ -38,6 +45,7 @@ export class AboutComponent implements OnInit {
     ngOnInit() {
         this.loadEntries();
         this.loadPeople();
+        this.setupFileUploader();
     }
 
     // Set entry to edit and edit state to true (Opens modal).
@@ -69,6 +77,10 @@ export class AboutComponent implements OnInit {
         this.loadPeople();
     }
 
+    upload() {
+        this.uploader.uploadAll();
+    }
+
     /* ------------------------ [ Helper functions ] ------------------------ */
     // Load entries from database.
     private loadEntries() {
@@ -91,6 +103,14 @@ export class AboutComponent implements OnInit {
             people => this.people = people,
             error =>  this.error = <any>error
         );
+    }
+
+    private setupFileUploader() {
+        this.uploader.onAfterAddingFile = (file)=> { file.withCredentials = false; };
+	       this.uploader.onCompleteItem = (item:any, response:any, status:any, headers:any) => {
+            console.log("ImageUpload:uploaded:", item, status, response);
+            alert(response);
+        };
     }
 
     // Set edit state to edit entry.

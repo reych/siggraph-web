@@ -37,27 +37,14 @@ function person(name, year, major, position, quote, imageURL) {
 
 var storage = multer.diskStorage({
     destination: function (req, file, cb) {
-        cb(null, '../uploads')
+        cb(null, '../public/profile-uploads/')
     },
     filename: function (req, file, cb) {
         cb(null, file.fieldname + '-' + Date.now() + '.jpg')
     }
 });
 
-var upload = multer({ storage: storage }).single('profileImage');
-
-// whatever
-function multerUpload(req, res) {
-    upload(req, res, function (err) {
-        if (err) {
-            console.log("Error uploading image...")
-            res.status(400).send({err: err.message});
-        } else {
-            console.log("Creating new person...")
-
-        }
-    })
-}
+var upload = multer({ storage: storage }).single('profile');
 
 function uploadImage(filepath) {
     console.log("uploading image...");
@@ -155,6 +142,36 @@ router.put('/update-person', (req, res) => {
     .catch((err) => {
         res.status(400).send({err: err.message});
     })
+})
+
+router.delete('/person/delete/:id', (req, res) => {
+    People.findOneAndRemove({'id': req.params.id})
+    .then((data) => res.status(200).send(null))
+    .catch((err) => {
+        res.status(400).send({error:err.message});
+    })
+})
+
+// Upload an image and send back the filename.
+router.post('/image/upload', (req, res) => {
+    upload(req, res, function (err) {
+        if (err) {
+            console.log("Error uploading image...")
+            res.status(400).send({err: err.message});
+        } else {
+            console.log("Creating new person...")
+            res.status(200).send(req.file.filename);
+        }
+    })
+})
+
+// Delete an image.
+router.post('/image/delete/:path', (req, res) => {
+    // Delete existing profile picture.
+    if(path != null) {
+        let path = '../../public/'+path;
+        fs.unlinkSync(require.resolve(path));
+    }
 })
 
 module.exports = router;
