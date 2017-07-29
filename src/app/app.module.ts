@@ -9,11 +9,11 @@ import { environment } from '../environments/environment';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { EventsComponent, EditEventComponent } from './events/index';
-import { GalleryComponent } from './gallery/gallery.component';
+import { GalleryComponent, EditGalleryPostComponent } from './gallery/index';
 import { AboutComponent, EditAboutComponent, EditPersonComponent } from './about/index';
 
 // Shared services, pipes
-import { EventService, AboutService, ReversePipe } from './utils/index';
+import { EventService, AboutService, GalleryService, ReversePipe } from './utils/index';
 
 // External Libraries
 import { NgxMyDatePickerModule } from 'ngx-mydatepicker';
@@ -31,14 +31,15 @@ import { SponsorsComponent } from './sponsors/sponsors.component';
   declarations: [
     AppComponent,
     HomeComponent,
+    AboutComponent,
     EventsComponent,
     GalleryComponent,
     EditEventComponent,
     ReversePipe,
-    AboutComponent,
     EditAboutComponent,
     SponsorsComponent,
     EditPersonComponent,
+    EditGalleryPostComponent,
     FileSelectDirective
   ],
   imports: [
@@ -51,7 +52,7 @@ import { SponsorsComponent } from './sponsors/sponsors.component';
     //AngularFireDatabaseModule, // imports firebase/database, only needed for database features
     //AngularFireAuthModule // imports firebase/auth, only needed for auth features
   ],
-  providers: [EventService, AboutService],
+  providers: [EventService, AboutService, GalleryService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

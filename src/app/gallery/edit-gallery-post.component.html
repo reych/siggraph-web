@@ -1,8 +1,7 @@
 <div class="modal-thing">
-<div class="edit-box" *ngIf="event">
+<div class="edit-box">
     <button class="close-btn" (click)="closeWindow()">X</button>
     <h2>{{heading}}</h2>
-    <p>{{quote}}</p>
 
     <hr>
     <div class="form-table">
@@ -11,7 +10,7 @@
                 <label>Title:</label>
             </div>
             <div class="col-sm-8">
-                <input [(ngModel)]="proxyEvent.title">
+                <input [(ngModel)]="proxyGalleryPost.title">
             </div>
         </div>
         <div class="row input-group">
@@ -31,42 +30,34 @@
         </div>
         <div class="row">
             <div class="col-sm-4">
-                <label>Time:</label>
+                <label>Event Name:</label>
             </div>
             <div class="col-sm-8">
-                <input [(ngModel)]="proxyEvent.time">
+                <input [(ngModel)]="proxyGalleryPost.eventName">
             </div>
         </div>
         <div class="row">
             <div class="col-sm-4">
-                <label>Location:</label>
+                <label>Caption:</label>
             </div>
             <div class="col-sm-8">
-                <input [(ngModel)]="proxyEvent.location">
+                <textarea [(ngModel)]="proxyGalleryPost.caption"></textarea>
             </div>
         </div>
-        <div class="row">
+        <div *ngIf="!galleryPost.imageURL" class="row">
             <div class="col-sm-4">
-                <label>Link:</label>
+                <label>Image:</label>
             </div>
             <div class="col-sm-8">
-                <input [(ngModel)]="proxyEvent.link">
+                <input type="file" name="photo" ng2FileSelect [uploader]="uploader">
             </div>
         </div>
-        <div class="row">
+        <div *ngIf="galleryPost.imageURL" class="row">
             <div class="col-sm-4">
-                <label>Content:</label>
+                <label>Image:</label>
             </div>
             <div class="col-sm-8">
-                <textarea [(ngModel)]="proxyEvent.content"></textarea>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-sm-4">
-                <label>Thumbnail:</label>
-            </div>
-            <div class="col-sm-8">
-                <input type="file" [(ngModel)]="proxyEvent.imageURL">
+                <p>{{galleryPost.imageURL}}</p>
             </div>
         </div>
 

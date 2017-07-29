@@ -104,6 +104,7 @@ export class EditEventComponent implements OnInit{
         this.proxyEvent.location = this.event.location;
         this.proxyEvent.content = this.event.content;
         this.proxyEvent.imageURL = this.event.imageURL;
+        this.proxyEvent.link = this.event.link;
     }
     private copyValuesFromProxy() {
         this.event.title = this.proxyEvent.title;
@@ -112,5 +113,6 @@ export class EditEventComponent implements OnInit{
         this.event.location = this.proxyEvent.location;
         this.event.content = this.proxyEvent.content;
         this.event.imageURL = this.proxyEvent.imageURL;
+        this.event.link = this.proxyEvent.link;
     }
 }

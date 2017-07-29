@@ -1,14 +1,14 @@
-import { Injectable }    from '@angular/core';
+import { Injectable } from '@angular/core';
 import { Headers, Http } from '@angular/http';
 
 import 'rxjs/add/operator/toPromise';
 
-import { Event } from '../model/event';
+import { GalleryPost } from '../model/gallerypost'
 
 @Injectable()
-export class EventService {
+export class GalleryService {
     // api URL.
-    private eventsUrl = 'http://localhost:3000/api/events';
+    private galleryUrl = 'http://localhost:3000/api/gallery';
 
     // Request headers.
     private headers = new Headers({
@@ -17,29 +17,27 @@ export class EventService {
 
     constructor( private http: Http ) { }
 
-    // Get all events.
-    getEvents(): Promise<Event[]> {
-        const url = `${this.eventsUrl}/all`;
+    getAllPosts(): Promise<GalleryPost[]> {
+        const url = `${this.galleryUrl}/all`;
         return this.http.get(url)
             .toPromise()
-            .then(response => response.json() as Event[])
+            .then(response => response.json() as GalleryPost[])
             .catch(this.handleError);
     }
 
-    // Save event.
-    save(event: Event): Promise<Event>  {
-        if (event.eventId) {
+    save(galleryPost: GalleryPost): Promise<GalleryPost>  {
+        if (galleryPost.id) {
             console.log("Putting");
-            return this.put(event);
+            return this.put(galleryPost);
         } else {
             console.log("Posting");
-            return this.post(event);
+            return this.post(galleryPost);
         }
     }
 
-    // Delete event.
-    delete(eventId: number): Promise<void> {
-        const url = `${this.eventsUrl}/delete/${eventId}`;
+    // Delete gallery post.
+    delete(id: number): Promise<void> {
+        const url = `${this.galleryUrl}/delete/${id}`;
         return this.http.delete(url, {headers: this.headers})
             .toPromise()
             .then(() => null)
@@ -47,22 +45,22 @@ export class EventService {
     }
 
     /* ------------------------ [ Helper functions ] ------------------------ */
-    // Add new event.
-    private post(event: Event): Promise<Event> {
-        const url = `${this.eventsUrl}/add`;
+    // Add new gallery post.
+    private post(galleryPost: GalleryPost): Promise<GalleryPost> {
+        const url = `${this.galleryUrl}/add`;
         return this.http
-            .post(url, JSON.stringify(event), {headers: this.headers})
+            .post(url, JSON.stringify(galleryPost), {headers: this.headers})
             .toPromise()
             .then(res => res.json().data)
             .catch(this.handleError);
     }
-    // Update existing event.
-    private put(event: Event) {
-        const url = `${this.eventsUrl}/update`;
+    // Update existing gallery post.
+    private put(galleryPost: GalleryPost): Promise<GalleryPost> {
+        const url = `${this.galleryUrl}/update`;
         return this.http
-            .put(url, JSON.stringify(event), {headers: this.headers})
+            .put(url, JSON.stringify(galleryPost), {headers: this.headers})
             .toPromise()
-            .then(() => event)
+            .then(() => galleryPost)
             .catch(this.handleError);
     }
 
@@ -71,4 +69,5 @@ export class EventService {
         console.error('An error occurred', error);
         return Promise.reject(error.message || error);
     }
+
 }
