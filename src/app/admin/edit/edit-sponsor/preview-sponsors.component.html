@@ -1,0 +1,14 @@
+<div *ngIf="!editSponsor">
+    <h2 class="heading">Sponsors</h2>
+    <button class="rounded-btn add-btn" (click)="setCreateSponsor()">Add Sponsor</button>
+    <ul class="plain-list">
+        <li *ngFor="let sponsor of sponsors" class="thin-badge clearfix">
+            <h3 class="left">{{sponsor.name}}</h3>
+            <div class="right buttons">
+                <button class="link-btn edit-btn" (click)="setUpdateSponsor(sponsor)">Edit</button>
+                <button class="link-btn delete-btn" (click)="delete(sponsor.id)">Delete</button>
+            </div>
+        </li>
+    </ul>
+</div>
+<edit-sponsor class="cover" *ngIf="editSponsor" (close)="close($event)" [sponsor]="sponsorToEdit"></edit-sponsor>

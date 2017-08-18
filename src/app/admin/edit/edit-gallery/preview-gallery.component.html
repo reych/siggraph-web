@@ -1,0 +1,13 @@
+<div *ngIf="!isEditPost()">
+    <h2 class="center">Gallery</h2>
+    <button (click)="setEditPost(null)" class="rounded-btn">Add post</button>
+    <div class="gallery-container inline">
+        <div *ngFor = "let image of images" class="gallery-entry">
+            <img [src]="image.imageURL" class="thumbnail">
+            <button class="link-btn edit-btn" (click)="setEditPost(image)">Edit</button>
+            <button class="link-btn delete-btn" (click)="delete(image.id)">Delete</button>
+        </div>
+    </div>
+
+</div>
+<edit-gallery-post class="cover" *ngIf="isEditPost()" [galleryPost]="postToEdit" (close)="close($event)"></edit-gallery-post>

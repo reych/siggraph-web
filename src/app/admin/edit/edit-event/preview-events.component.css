@@ -1,0 +1,13 @@
+.truncate {
+    max-height: 50px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.inline * {
+    display: inline-block;
+}
+h3 {
+    padding-bottom: 5px;
+    padding-top: 5px;
+    margin: 0;
+}

@@ -1,0 +1,86 @@
+.modal-thing {
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.8);
+}
+.fill-image {
+    max-height: 90%;
+    height: auto;
+    width: auto;
+    max-width: 80%;
+    margin: 0 auto;
+}
+img {
+    vertical-align: middle;
+}
+button {
+    vertical-align: middle;
+}
+h2 {
+    font-weight: lighter;
+    float: left;
+    color: #444;
+}
+.topsection {
+    padding: 1em 2em;
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.8);
+    transition: all 0.2s ease-in-out;
+}
+.topsection:hover {
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,1.0);
+    transition: all 0.2s ease-in-out;
+}
+.topsection button{
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    font-weight: lighter;
+    font-size: 32px;
+    color: #444;
+}
+.topsection button:hover {
+    color: #777;
+}
+.centersection {
+    position: relative;
+    text-align: center;
+}
+.centersection .left-btn{
+    position: absolute;
+    left: 0;
+}
+.centersection .right-btn{
+    position: absolute;
+    right: 0;
+}
+.centersection img {
+
+}
+.bottomsection {
+    padding: 1em 2em;
+    color: white;
+}
+.arrow-btn {
+    background: transparent;
+    padding: 20% 2em;
+}
+.arrow-btn img {
+    max-width: 30px;
+    height: auto;
+    width: auto;
+    cursor: pointer;
+    opacity: .7;
+}
+.arrow-btn img:hover {
+    opacity: 1;
+}
+.arrow-btn img:active {
+    opacity: 0.5;
+}
+.left-btn {
+    /*background-image: url('../../../../assets/left-arrow.png');*/
+}
+.right-btn {
+    /*background-image: url('../../../../assets/right-arrow.png');*/
+}

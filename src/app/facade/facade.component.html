@@ -1,0 +1,37 @@
+<div class="overall-container">
+  <header role="banner">
+      <div class="header-navigation">
+          <div class="clearfix">
+              <div class="media-heading left">
+                  <a routerLink="/" class="inline" (click)="select('home')">
+                      <img class="logo" src="assets/logo-usc-siggraph-simple.png">
+                      <div class="lighter"><h2>ACM</h2></div><h2>Siggraph</h2>
+                  </a>
+              </div>
+              <ul class="d-horizontal-list right">
+                  <li [class.selected]="current === 'about'"><a routerLink="/about" (click)="select('about')">About</a></li>
+                  <li [class.selected]="current === 'events'"><a routerLink="/events" (click)="select('events')">Events</a></li>
+                  <li [class.selected]="current === 'sponsors'"><a routerLink="/sponsors" (click)="select('sponsors')">Sponsors</a></li>
+                  <li [class.selected]="current === 'gallery'"><a routerLink="/gallery" (click)="select('gallery')">Gallery</a></li>
+                  <li><a href="#news">News</a></li>
+              </ul>
+          </div>
+      </div>
+  </header>
+
+  <main role="main" class="maintext">
+      <router-outlet></router-outlet>
+
+  </main>
+
+
+  <footer>
+      <ul class="social-media-bar horizontal-list">
+          <li><a href="http://twitter.com"><img src="assets/twitter_logo.png" class="media-icon"></a></li>
+          <li><a href="http://facebook.com"><img src="assets/facebook_logo.png" class="media-icon"></a></li>
+          <li><a href="http://instagram.com"><img src="assets/instagram_logo.png" class="media-icon"></a></li>
+      </ul>
+      <p><small>&copy; Copyright USC ACM Siggraph</small></p>
+  </footer>
+
+</div>

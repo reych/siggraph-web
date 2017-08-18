@@ -1,0 +1,14 @@
+<div class="modal-thing">
+    <div class="topsection clearfix">
+        <h2>{{currentPost.title}}</h2>
+        <button (click)="closeWindow()" class="right">X</button>
+    </div>
+    <div class="centersection">
+        <div class="arrow-btn left-btn"><img src="assets/left-arrow2.png" (click)="previousImage()"></div>
+        <div class="arrow-btn right-btn"><img src="assets/right-arrow2.png" (click)="nextImage()"></div>
+        <img [src]="currentPost.imageURL" class="fill-image">
+    </div>
+    <div class="bottomsection">
+        <p> {{currentPost.caption}}</p>
+    </div>
+</div>

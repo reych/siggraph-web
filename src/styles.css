@@ -1,4 +1,5 @@
 /* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css?family=Roboto:300,400');
 /* ----[ Base Styles ]---- */
 *{
 	box-sizing:border-box;
@@ -11,6 +12,8 @@ body{
 	margin: 0;
 	font: 100% sans-serif;
 	padding: 0;
+	font-family: 'Roboto', sans-serif;
+	font-weight: lighter;
 	/*background-color: #2F5C5A;/* 3A6B69; /*#00A37A;*/
 	/*background-color: #1B485C;*/
 }
@@ -20,19 +23,34 @@ header{
 	padding: 0;
 	font-size: 100%;
 }
+.logo {
+	max-height: 30px;
+	vertical-align: middle;
+}
 .media-heading {
 	margin:0;
+	padding: .7em 0;
 }
 .media-heading a{
 	text-decoration: none;
 	color: #006B8F;
 	margin:0;
 }
+.media-heading h2 {
+	margin: 0;
+	display: inline-block;
+	vertical-align: middle;
+	font-weight: bold;
+	font-size: 16px;
+}
+.media-heading .lighter h2 {
+	font-weight: lighter;
+}
 .header-navigation{
-	background: #001A33;
+	background: #001A33; /* dark red: #2b0000; light red: 440000 */
 	margin: auto;
 	min-height: 2.5em;
-	padding: .1em 0;
+	padding: .1em 2em;
 }
 /* Lists */
 .d-horizontal-list, .horizontal-list{
@@ -42,8 +60,8 @@ header{
 	list-style-type: none;
 	padding: 0;
 }
-.header-navigation a{
-	color: #FFF;
+.header-navigation a {
+	color: #eee;
 	text-decoration: none;
 }
 .social-media-bar li {
@@ -55,6 +73,7 @@ header{
 }
 .plain-list {
 	padding-left: 0;
+	margin-left: 0;
 }
 .plain-list li {
 	list-style-type: none;
@@ -68,15 +87,31 @@ header{
 	padding: .5em;
 	padding-left: 50px;
     padding-right: 50px;
+	line-height: 1.5em;
 
 }
+.content-container h2 {
+	font-size: 48px;
+	font-weight: lighter;
+	margin: 1em 0;
+	line-height:1em;
+}
+.content-container .heading3 h3{
+	font-weight: lighter;
+}
 .inner-content {
-	margin: .5em;
+
+}
+.cover {
+	height: 100%;
+	width: 100%;
+	position: relative;
+	top:0;
 }
 .logo-splash {
 	display:none;
 	width: 100%;
-	height:650px;
+	height:500px;
 	background-color: red;
 	text-align: center;
 	padding: .5em;
@@ -87,15 +122,57 @@ header{
 .textbox-2 {
 	padding: .5em;
 }
+.badge {
+	padding: 1em 1em;
+	margin: .5em 0;
+	/*background-color: #e6fff9;*/
+	background-color: #EEE;
+	/*background-color: rgba(0,0,0,0.5);
+	border: 2px solid rgba(0, 0, 0, 0.2);*/
+	/*color: #eee;*/
+	/*border-radius: 4px;*/
+	/*color: #006666;*/
+}
+.thin-badge {
+	padding: .5em;
+	margin: .5em 0;
+	background-color: #EEE;
+}
 /* Gallery */
 .img-container{
 	background-color: #F2F2F2;
 	padding: .5em;
-	max-width: 18em;
-	margin: 2em 1em;
+	/*max-width: 18em;*/
+	margin: 1em 1em;
 }
 .img-container img{
 	max-width: 15em;
+}
+.gallery-entry {
+	background-color: white;
+	display: inline-block;
+	text-align: center;
+	border: solid 2px black;
+    margin: 2px 5px;
+}
+.thumbnail {
+	display: block;
+  	max-height:150px;
+	width: auto;
+	height: auto;
+	vertical-align: middle;
+}
+.profile-thumbnail {
+	display: block;
+  	max-width:230px;
+  	max-height:230px;
+	width: auto;
+	height: auto;
+}
+.helper {
+    display: inline-block;
+    height: 100%;
+    vertical-align: middle;
 }
 
 footer{
@@ -106,13 +183,20 @@ footer{
 .center-text {
 	text-align: center;
 }
-
+.inline > * {
+	display: inline-block;
+}
 /* animation and other effects */
+/*
 .d-horizontal-list li :hover{
 	background-color: #667685;
-}
+}*/
 a{
 	text-decoration: none;
+}
+.d-horizontal-list a:hover, .selected a{
+	border-bottom: solid 2px #fffdb5;
+	color: #fffdb5;
 }
 /* Buttons */
 .link-btn {
@@ -121,7 +205,7 @@ a{
 	border: none;
 }
 .rounded-btn {
-    height: 3em;
+    height: 2em;
     width: 5em;
     border: none;
     border-radius: 4px;
@@ -134,7 +218,7 @@ a{
 .rounded-btn:hover, .rounded-btn:active {
     background-color: #0a585c;
 }
-.edit-btn, .delete-btn {
+.edit-btn, .delete-btn, .cancel-btn {
 	font-size: 16px;
 }
 .edit-btn {
@@ -149,8 +233,19 @@ a{
 .delete-btn:hover {
 	color: #722400;
 }
+.cancel-btn {
+    background-color: transparent;
+    color: #3acdff;
+}
+.cancel-btn:hover {
+    background-color: transparent;
+    color: #217a99;
+}
 .add-btn {
 	width: auto;
+}
+.calendar-btn {
+	float: right;
 }
 /* Others */
 .keep-newlines {
@@ -177,11 +272,19 @@ a{
     font-size: 16px;
     color: #333;
 }
-.modal-thing textarea {
+.edit-box input, .edit-box select, .edit-box textarea {
+	border-radius: 4px;
+    border: 1px solid #333;
+    width: 100%;
+    padding: 5px;
+    font-size: 16px;
+    color: #333;
+}
+.edit-box textarea {
     vertical-align: text-top;
     height: 8em;
 }
-.modal-thing label {
+.edit-box label {
     font-weight: normal;
     font-size: 16px;
     color: #333;
@@ -199,16 +302,15 @@ a{
 }
 .edit-box {
     padding: 1em;
-    border-radius: 4px;
     background-color:white;
-    width: 50%;
+    /*width: 50%;
     max-width: 600px;
     min-width: 400px;
     text-align: center;
     position: fixed;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);*/
 
 }
 /* ----[ 20em (320 px and up, iphone) ]---- */
@@ -224,7 +326,7 @@ a{
 	}
 	.header-navigation{
 		text-align: center;
-		line-height: 2;
+		/*line-height: 2;*/
 	}
 	.d-horizontal-list li{
 		display: block;
@@ -238,7 +340,7 @@ a{
 }
 
 
-/* ----[ 30em (480px and up, computer screen)]---- */
+/* ----[ 36em (576px and up, computer screen)]---- */
 @media only screen and (min-width: 36em){
 	header{
 		text-align: left;
@@ -257,10 +359,9 @@ a{
 	}
 	.d-horizontal-list li, .horizontal-list li{
 		display: inline-block;
-		height: 2em;
 	}
 	.header-navigation a{
-		padding: 1.5em 1em;
+		padding: 1em 1em;
 		max-height: 100%;
 	}
 	.social-media-bar li {
@@ -274,8 +375,8 @@ a{
 		display: block;
 	}
 	.textbox-2 {
-		width:50%;
-		display: inline-block;
+		padding-left: 5em;
+		padding-right: 5em;
 	}
 	.right {
 		float: right;

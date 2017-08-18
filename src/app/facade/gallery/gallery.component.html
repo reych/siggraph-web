@@ -1,0 +1,9 @@
+<div class="content-container">
+    <h2>Gallery</h2>
+        <div class="gallery-container">
+            <div *ngFor = "let image of images" class="gallery-entry">
+                <img [src]="image.imageURL" class="thumbnail" (click)="setSelectedPost(image)">
+            </div>
+        </div>
+</div>
+<gallery-detail *ngIf="selectedPost" (close)="close($event)" [images]="images" [currentPost]="selectedPost"></gallery-detail>

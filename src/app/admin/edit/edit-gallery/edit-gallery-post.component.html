@@ -1,0 +1,62 @@
+<div class="fill">
+<div class="edit-box clearfix">
+    <div class="right">
+        <button class="cancel-btn link-btn" (click)="closeWindow()">Cancel</button>
+        <button class="save-btn rounded-btn" (click)="save()">Save</button>
+    </div>
+    <h2>{{heading}}</h2>
+
+    <hr>
+    <div class="form-table">
+        <div class="row">
+            <div class="col-sm-4">
+                <label>Title:</label>
+            </div>
+            <div class="col-sm-8">
+                <input [(ngModel)]="proxyGalleryPost.title">
+            </div>
+        </div>
+        <div class="row input-group">
+            <label>Date:</label>
+            <div class="border-group">
+            <input class="form-control" style="float:none" placeholder="Select a date" ngx-mydatepicker name="mydate"
+                   [(ngModel)]="dateModel" [options]="myOptions" #dp="ngx-mydatepicker" (dateChanged)="onDateChanged($event)"
+                   (click)="dp.toggleCalendar()"/>
+        </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-4">
+                <label>Event Name:</label>
+            </div>
+            <div class="col-sm-8">
+                <input [(ngModel)]="proxyGalleryPost.eventName">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-4">
+                <label>Caption:</label>
+            </div>
+            <div class="col-sm-8">
+                <textarea [(ngModel)]="proxyGalleryPost.caption"></textarea>
+            </div>
+        </div>
+        <div *ngIf="!galleryPost.imageURL" class="row">
+            <div class="col-sm-4">
+                <label>Image:</label>
+            </div>
+            <div class="col-sm-8">
+                <input type="file" name="photo" ng2FileSelect [uploader]="uploader">
+            </div>
+        </div>
+        <div *ngIf="galleryPost.imageURL" class="row">
+            <div class="col-sm-4">
+                <label>Image:</label>
+            </div>
+            <div class="col-sm-8">
+                <p>{{galleryPost.imageURL}}</p>
+            </div>
+        </div>
+
+    </div>
+</div>
+</div>

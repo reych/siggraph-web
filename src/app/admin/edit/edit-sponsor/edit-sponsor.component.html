@@ -1,0 +1,44 @@
+<div class="edit-box clearfix" *ngIf="sponsor">
+    <div class="right">
+        <button class="cancel-btn rounded-btn" (click)="closeWindow()">Cancel</button>
+        <button class="save-btn rounded-btn" (click)="save()">Save</button>
+    </div>
+    <h2>{{heading}}</h2>
+    <p>{{quote}}</p>
+
+    <hr>
+    <div class="form-table">
+        <div class="row">
+            <div class="col-sm-4">
+                <label>Sponsor Name:</label>
+            </div>
+            <div class="col-sm-8">
+                <input [(ngModel)]="proxySponsor.name">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-4">
+                <label>Description:</label>
+            </div>
+            <div class="col-sm-8">
+                <textarea [(ngModel)]="proxySponsor.description"></textarea>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-4">
+                <label>Link:</label>
+            </div>
+            <div class="col-sm-8">
+                <input [(ngModel)]="proxySponsor.link">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-4">
+                <label>Image:</label>
+            </div>
+            <div class="col-sm-8">
+                <input [(ngModel)]="proxySponsor.imagePath">
+            </div>
+        </div>
+    </div>
+</div>

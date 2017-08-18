@@ -1,0 +1,14 @@
+<div class="content-container">
+    <h2 class="heading">Events</h2>
+    <ul class="plain-list">
+        <li *ngFor="let event of events" class="badge">
+            <div class="clearfix">
+                <h3 class="left">{{event.title}}</h3>
+                <small class="right">Updated: {{formatDate(event.updateTime)}}</small>
+            </div>
+            <p>{{formatDate(event.date)}} | {{event.time}} | {{event.location}}</p>
+            <p class="keep-newlines">{{event.content}}</p>
+            <p *ngIf="event.link"><a [href]="event.link" class="link-href-btn">Visit Facebook page</a></p>
+        </li>
+    </ul>
+</div>

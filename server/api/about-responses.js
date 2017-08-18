@@ -45,43 +45,6 @@ var storage = multer.diskStorage({
 });
 
 var upload = multer({ storage: storage }).single('profile');
-<<<<<<< HEAD
-
-// whatever
-function multerUpload(req, res) {
-    upload(req, res, function (err) {
-        if (err) {
-            console.log("Error uploading image...")
-            res.status(400).send({err: err.message});
-        } else {
-            console.log("Creating new person...")
-
-        }
-    })
-}
-=======
->>>>>>> 1df1e42713410c582cbb68898a0d864ab462bddc
-
-function uploadImage(filepath) {
-    console.log("uploading image...");
-    var tempPath = filepath;
-    var targetPath = path.resolve('../uploads/image.png');
-    console.log("target path: "+targetPath);
-    let ext = path.extname(filepath).toLowerCase();
-    if ( ext === '.png' || ext === 'jpg' || ext === 'jpeg') {
-        fs.rename(tempPath, targetPath, function(err) {
-            if (err) return "";
-            console.log("Upload completed!");
-            return targetPath;
-        });
-    } else {
-        fs.unlink(tempPath, function () {
-            if (err) return "";
-            console.error("Only .png, .jpg files are allowed!");
-            return "";
-        });
-    }
-}
 
 /* -------------------------- [ About Routes ] ----------------------------- */
 // Get all entries from the About page.
@@ -175,18 +138,28 @@ router.post('/image/upload', (req, res) => {
             console.log("Error uploading image...")
             res.status(400).send({err: err.message});
         } else {
-            console.log("Creating new person...")
+            console.log("Uploaded image...")
             res.status(200).send(req.file.filename);
         }
     })
 })
 
 // Delete an image.
-router.post('/image/delete/:path', (req, res) => {
+router.delete('/image/delete/:id', (req, res) => {
     // Delete existing profile picture.
-    if(path != null) {
-        let path = '../../public/'+path;
+    People.findOne({'id': req.params.id}).exec()
+    .then((data) => {
+        let path = '../../public/'+data.imageURL;
         fs.unlinkSync(require.resolve(path));
+        res.status(200).send(data);
+    })
+    .catch((err) => {
+        res.status(400).send({err: err.message});
+    })
+
+
+    if(path != null) {
+
     }
 })
 

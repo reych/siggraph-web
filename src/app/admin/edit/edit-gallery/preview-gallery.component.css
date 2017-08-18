@@ -1,0 +1,7 @@
+.thumbnail {
+    max-height: 100px;
+}
+.gallery-entry {
+    margin-left: 0;
+    margin-right: 10px;
+}

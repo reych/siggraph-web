@@ -5,19 +5,15 @@ import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
 import { environment } from '../environments/environment';
 
+// Modules
+import { AdminModule } from './admin/admin.module';
+import { FacadeModule } from './facade/facade.module';
+
 // Components
 import { AppComponent } from './app.component';
-import { HomeComponent } from './home/home.component';
-import { EventsComponent, EditEventComponent } from './events/index';
-import { GalleryComponent, EditGalleryPostComponent } from './gallery/index';
-import { AboutComponent, EditAboutComponent, EditPersonComponent } from './about/index';
 
 // Shared services, pipes
-import { EventService, AboutService, GalleryService, ReversePipe } from './utils/index';
-
-// External Libraries
-import { NgxMyDatePickerModule } from 'ngx-mydatepicker';
-import { FileSelectDirective } from 'ng2-file-upload';
+import { EventService, AboutService, GalleryService, SponsorService, ReversePipe } from './services/index';
 
 // Firebase
 // import { AngularFireModule } from 'angularfire2';
@@ -25,34 +21,23 @@ import { FileSelectDirective } from 'ng2-file-upload';
 // import { AngularFireAuthModule } from 'angularfire2/auth';
 
 import { AppRoutingModule } from './app-routing.module';
-import { SponsorsComponent } from './sponsors/sponsors.component';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    HomeComponent,
-    AboutComponent,
-    EventsComponent,
-    GalleryComponent,
-    EditEventComponent,
-    ReversePipe,
-    EditAboutComponent,
-    SponsorsComponent,
-    EditPersonComponent,
-    EditGalleryPostComponent,
-    FileSelectDirective
+    AppComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
     AppRoutingModule,
-    NgxMyDatePickerModule
+    AdminModule,
+    FacadeModule
     //AngularFireModule.initializeApp(environment.firebase),
     //AngularFireDatabaseModule, // imports firebase/database, only needed for database features
     //AngularFireAuthModule // imports firebase/auth, only needed for auth features
   ],
-  providers: [EventService, AboutService, GalleryService],
+  providers: [ EventService, AboutService, GalleryService, SponsorService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

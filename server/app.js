@@ -37,6 +37,7 @@ app.use(express.static(path.join(__dirname, '..', 'public')));
 app.use('/api/events', require('./api/events-responses'));
 app.use('/api/about', require('./api/about-responses'));
 app.use('/api/gallery', require('./api/gallery-responses'));
+app.use('/api/sponsors', require('./api/sponsors-responses'));
 app.use('/api/uploads', require('./api/uploads-responses'));
 
 // Catch other routes.

@@ -1,0 +1,16 @@
+<div class="content-container">
+    <h2 class="heading">Sponsors</h2>
+    <p>{{message}}</p>
+    <hr>
+    <ul class="plain-list">
+        <li *ngFor="let sponsor of sponsors">
+            <div class="heading3">
+                <h3>{{sponsor.name}}</h3>
+            </div>
+            <p class="keep-newlines">{{sponsor.description}}</p>
+            <p *ngIf="sponsor.link"><a [href]="sponsor.link" class="link-href-btn">Visit sponsor site</a></p>
+            <hr>
+        </li>
+    </ul>
+
+</div>

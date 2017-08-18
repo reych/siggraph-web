@@ -1,0 +1,37 @@
+<div class="content-container">
+    <h2 class="heading">About</h2>
+
+    <div class="inner-content">
+
+    <div *ngIf="whatWeDo" class="heading3">
+        <div>
+            <h3>{{whatWeDo.title}}</h3>
+        </div>
+        <p class="keep-newlines">{{whatWeDo.content}}</p>
+    </div>
+
+    <div class="heading3"><h3>Who we are</h3></div>
+    <ul class="plain-list horizontal-list">
+        <li *ngFor="let person of people">
+            <div class="fade-box">
+                <div class="info-box">
+                    <h4>{{person.name}}</h4>
+                    <p>{{person.year}}</p>
+                    <p>{{person.major}}</p>
+                </div>
+                <img class="img-box profile-thumbnail" [src]= "person.imageURL">
+            </div>
+
+        </li>
+    </ul>
+
+
+    <div *ngIf="contact">
+        <div class="heading3">
+            <h3>{{contact.title}}</h3>
+        </div>
+        <p class="keep-newlines">{{contact.content}}</p>
+    </div>
+
+    </div>
+</div>
