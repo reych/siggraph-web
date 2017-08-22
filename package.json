@@ -24,6 +24,7 @@
     "core-js": "^2.4.1",
     "express": "^4.15.3",
     "fs": "0.0.1-security",
+    "jwt-simple": "^0.5.1",
     "moment": "^2.18.1",
     "mongoose": "^4.10.0",
     "multer": "^1.3.0",

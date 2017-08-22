@@ -9,10 +9,11 @@ import { EventsComponent } from './events/events.component';
 import { GalleryComponent } from './gallery/gallery.component';
 import { AboutComponent } from './about/about.component';
 import { SponsorsComponent } from './sponsors/sponsors.component';
+import { NewsComponent } from './news/news.component';
 
 // Routes
 import { FacadeRoutingModule} from './facade-routing.module';
-import { GalleryDetailComponent } from './gallery/gallery-detail/gallery-detail.component'
+import { GalleryDetailComponent } from './gallery/gallery-detail/gallery-detail.component';
 
 @NgModule({
   imports: [
@@ -26,7 +27,8 @@ import { GalleryDetailComponent } from './gallery/gallery-detail/gallery-detail.
       EventsComponent,
       GalleryComponent,
       SponsorsComponent,
-      GalleryDetailComponent
+      GalleryDetailComponent,
+      NewsComponent
   ]
 })
 export class FacadeModule { }

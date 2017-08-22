@@ -2,10 +2,11 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 import { Person } from '../../../model/person';
 import { AboutService } from '../../../services/about.service';
+import { AuthService } from '../../../services/auth.service';
 
 import {  FileUploader } from 'ng2-file-upload/ng2-file-upload';
 
-const uploadURL = 'http://localhost:3000/api/about/image/upload';
+const uploadURL = 'http://localhost:3000/api/about/r/image/upload';
 
 @Component({
   selector: 'edit-person',
@@ -23,9 +24,9 @@ export class EditPersonComponent implements OnInit {
     error: any;
 
     // File upload.
-    uploader:FileUploader = new FileUploader({url: uploadURL, itemAlias: 'profile'});
+    uploader:FileUploader = new FileUploader({url: uploadURL, authToken: this.authService.getCurrentAccessToken(), itemAlias: 'profile'});
 
-    constructor( private aboutService: AboutService ) { }
+    constructor( private aboutService: AboutService, private authService: AuthService ) { }
 
     ngOnInit() {
         this.initialize();

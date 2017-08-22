@@ -1,0 +1,8 @@
+<div class="container">
+    <div class="center-login">
+        <input [(ngModel)]="username" type="text" placeholder="Username"/>
+        <input [(ngModel)]="password" type="password" placeholder="Password"/>
+        <button (click)="login()" >Login</button>
+        <p class="error-text">{{errorMessage}}</p>
+    </div>
+</div>

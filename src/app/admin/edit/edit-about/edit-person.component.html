@@ -27,7 +27,7 @@
             <input [(ngModel)]="person.quote">
         </div>
         <div class="row" *ngIf="!person.imageURL">
-            <label>Image URL:</label>
+            <label>Image:</label>
             <input type="file" name="profile" ng2FileSelect [uploader]="uploader">
         </div>
         <div class="row" *ngIf="person.imageURL">

@@ -13,7 +13,9 @@ import { FacadeModule } from './facade/facade.module';
 import { AppComponent } from './app.component';
 
 // Shared services, pipes
-import { EventService, AboutService, GalleryService, SponsorService, ReversePipe } from './services/index';
+import { EventService, AboutService, GalleryService, SponsorService, NewsService, HomeService } from './services/index';
+import { AuthGuard } from './services/auth-guard.service';
+import { AuthService } from './services/auth.service';
 
 // Firebase
 // import { AngularFireModule } from 'angularfire2';
@@ -21,10 +23,13 @@ import { EventService, AboutService, GalleryService, SponsorService, ReversePipe
 // import { AngularFireAuthModule } from 'angularfire2/auth';
 
 import { AppRoutingModule } from './app-routing.module';
+import { LoginComponent } from './login/login.component';
+import { LoginRoutingModule } from './login/login-routing.module';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -32,12 +37,13 @@ import { AppRoutingModule } from './app-routing.module';
     HttpModule,
     AppRoutingModule,
     AdminModule,
-    FacadeModule
+    FacadeModule,
+    LoginRoutingModule
     //AngularFireModule.initializeApp(environment.firebase),
     //AngularFireDatabaseModule, // imports firebase/database, only needed for database features
     //AngularFireAuthModule // imports firebase/auth, only needed for auth features
   ],
-  providers: [ EventService, AboutService, GalleryService, SponsorService ],
+  providers: [ EventService, AboutService, GalleryService, SponsorService, NewsService, HomeService, AuthGuard, AuthService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

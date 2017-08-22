@@ -2,9 +2,11 @@ const mongoose = require('mongoose');
 
 const postsSchema = new mongoose.Schema({
     title: String,
-    date: String,
     content: String,
-    imageURL: String,
+    author: String,
+    imagePath: String,
+    link: String,
+    updateTime: Number,
     id: Number
 });
 

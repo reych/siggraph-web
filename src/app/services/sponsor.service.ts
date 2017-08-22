@@ -37,7 +37,7 @@ export class SponsorService {
   }
   // Delete sponsor.
   delete(id: number): Promise<void> {
-      const url = `${this.sponsorsUrl}/delete/${id}`;
+      const url = `${this.sponsorsUrl}/r/delete/${id}`;
       return this.http.delete(url, {headers: this.headers})
           .toPromise()
           .then(() => null)
@@ -47,7 +47,7 @@ export class SponsorService {
   /* ------------------------ [ Helper functions ] ------------------------ */
   // Add new sponsor
   private post(sponsor: Sponsor): Promise<Sponsor> {
-    const url = `${this.sponsorsUrl}/add`;
+    const url = `${this.sponsorsUrl}/r/add`;
     return this.http
         .post(url, JSON.stringify(sponsor), {headers: this.headers})
         .toPromise()
@@ -57,7 +57,7 @@ export class SponsorService {
 
   // Update existing sponsor.
   private put(sponsor:Sponsor) {
-      const url = `${this.sponsorsUrl}/update`;
+      const url = `${this.sponsorsUrl}/r/update`;
       return this.http
           .put(url, JSON.stringify(sponsor), {headers: this.headers})
           .toPromise()

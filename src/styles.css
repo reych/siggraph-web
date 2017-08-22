@@ -17,6 +17,12 @@ body{
 	/*background-color: #2F5C5A;/* 3A6B69; /*#00A37A;*/
 	/*background-color: #1B485C;*/
 }
+input:focus,
+select:focus,
+textarea:focus,
+button:focus {
+    outline: none;
+}
 /* Headings */
 header{
 	margin: 0;

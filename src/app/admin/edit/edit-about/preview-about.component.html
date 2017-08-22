@@ -1,8 +1,6 @@
 <div *ngIf="!(isEditEntry() || isEditPerson())">
     <h2 class="heading">Entries</h2>
 
-
-
     <div class="thin-badge clearfix" *ngIf="whatWeDo">
         <div>
             <h3 class="left">{{whatWeDo.title}}</h3>
@@ -28,8 +26,8 @@
             <li class="thin-badge clearfix"*ngFor="let person of people">
                 <h3 class="left">{{person.name}}</h3>
                 <div class="buttons right">
-                    <button class="link-btn edit-btn"(click)="setEditPerson(person)">Edit</button>
-                    <button class="link-btn delete-btn">Delete</button>
+                    <button class="link-btn edit-btn" (click)="setEditPerson(person)">Edit</button>
+                    <button class="link-btn delete-btn" (click)="deletePerson(person.id)">Delete</button>
                 </div>
             </li>
         </ul>

@@ -60,6 +60,16 @@ export class PreviewAboutComponent implements OnInit {
         return this.editState == this.EDIT_PERSON;
     }
 
+    // Delete the person.
+    deletePerson(id: number) {
+        this.aboutService
+        .deletePerson(id)
+        .then(() => {
+            this.people = this.people.filter(person => person != person);
+            this.loadPeople();
+        })
+    }
+
     // Set state to close modal window.
     close() {
         this.disableEdit();

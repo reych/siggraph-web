@@ -1,0 +1,12 @@
+<div class="content-container">
+    <h2 class="heading">News</h2>
+    <ul class="plain-list">
+        <li *ngFor="let article of news" class="badge">
+            <div class="clearfix">
+                <h3 class="left">{{article.title}}</h3>
+                <small class="right">Updated: {{formatDate(article.updateTime)}}</small>
+            </div>
+            <p class="keep-newlines">{{article.content}}</p>
+        </li>
+    </ul>
+</div>

@@ -8,6 +8,7 @@ import { EventsComponent } from './events/events.component';
 import { GalleryComponent } from './gallery/gallery.component';
 import { AboutComponent } from './about/about.component';
 import { SponsorsComponent } from './sponsors/sponsors.component';
+import { NewsComponent } from './news/news.component';
 
 const facadeRoutes: Routes = [
   {
@@ -22,7 +23,8 @@ const facadeRoutes: Routes = [
             { path: 'events', component: EventsComponent },
             { path: 'gallery', component: GalleryComponent },
             { path: 'about', component: AboutComponent },
-            { path: 'sponsors', component: SponsorsComponent}
+            { path: 'sponsors', component: SponsorsComponent},
+            { path: 'news', component: NewsComponent}
         ]
       }
     ]

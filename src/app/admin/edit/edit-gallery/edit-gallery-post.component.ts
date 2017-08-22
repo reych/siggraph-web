@@ -2,11 +2,12 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 import { GalleryPost } from '../../../model/gallerypost';
 import { GalleryService } from '../../../services/gallery.service';
+import { AuthService } from '../../../services/auth.service';
 
 import { INgxMyDpOptions, IMyDateModel } from 'ngx-mydatepicker';
 import {  FileUploader } from 'ng2-file-upload/ng2-file-upload';
 
-const uploadURL = 'http://localhost:3000/api/gallery/image/upload';
+const uploadURL = 'http://localhost:3000/api/gallery/r/image/upload';
 
 @Component({
     selector: 'edit-gallery-post',
@@ -33,11 +34,9 @@ export class EditGalleryPostComponent implements OnInit{
     };
 
     // File uploader.
-    uploader:FileUploader = new FileUploader({url: uploadURL, itemAlias: 'photo'});
+    uploader:FileUploader = new FileUploader({url: uploadURL, authToken: this.authService.getCurrentAccessToken(), itemAlias: 'photo'});
 
-    constructor(
-        private galleryService: GalleryService
-    ){ }
+    constructor( private galleryService: GalleryService, private authService: AuthService ){ }
 
     ngOnInit() {
         this.initialize();

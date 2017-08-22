@@ -4,6 +4,7 @@ import { Headers, Http } from '@angular/http';
 import 'rxjs/add/operator/toPromise';
 
 import { Event } from '../model/event';
+import { AuthService } from './auth.service';
 
 @Injectable()
 export class EventService {
@@ -15,12 +16,25 @@ export class EventService {
         'Content-Type': 'application/json'
     })
 
-    constructor( private http: Http ) { }
+    private authHeaders = new Headers({
+        'Content-Type': 'application/json',
+        'x-access-token': this.authService.getCurrentAccessToken()
+    })
+
+    constructor( private http: Http, private authService: AuthService ) { }
 
     // Get all events.
     getEvents(): Promise<Event[]> {
         const url = `${this.eventsUrl}/all`;
-        return this.http.get(url)
+        return this.http.get(url, {headers: this.headers})
+            .toPromise()
+            .then(response => response.json() as Event[])
+            .catch(this.handleError);
+    }
+
+    getCurrentEvents(): Promise<Event[]> {
+        const url = `${this.eventsUrl}/current`;
+        return this.http.get(url, {headers: this.headers})
             .toPromise()
             .then(response => response.json() as Event[])
             .catch(this.handleError);
@@ -39,8 +53,8 @@ export class EventService {
 
     // Delete event.
     delete(eventId: number): Promise<void> {
-        const url = `${this.eventsUrl}/delete/${eventId}`;
-        return this.http.delete(url, {headers: this.headers})
+        const url = `${this.eventsUrl}/r/delete/${eventId}`;
+        return this.http.delete(url, {headers: this.authHeaders})
             .toPromise()
             .then(() => null)
             .catch(this.handleError);
@@ -49,18 +63,18 @@ export class EventService {
     /* ------------------------ [ Helper functions ] ------------------------ */
     // Add new event.
     private post(event: Event): Promise<Event> {
-        const url = `${this.eventsUrl}/add`;
+        const url = `${this.eventsUrl}/r/add`;
         return this.http
-            .post(url, JSON.stringify(event), {headers: this.headers})
+            .post(url, JSON.stringify(event), {headers: this.authHeaders})
             .toPromise()
             .then(res => res.json().data)
             .catch(this.handleError);
     }
     // Update existing event.
     private put(event: Event) {
-        const url = `${this.eventsUrl}/update`;
+        const url = `${this.eventsUrl}/r/update`;
         return this.http
-            .put(url, JSON.stringify(event), {headers: this.headers})
+            .put(url, JSON.stringify(event), {headers: this.authHeaders})
             .toPromise()
             .then(() => event)
             .catch(this.handleError);

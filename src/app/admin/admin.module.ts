@@ -6,8 +6,9 @@ import { RouterModule } from '@angular/router';
 // Components
 import { AdminComponent } from './admin.component';
 import { EditAboutComponent, EditPersonComponent, EditEventComponent,
-    EditSponsorComponent, EditGalleryPostComponent, PreviewAboutComponent,
-    PreviewEventsComponent, PreviewSponsorsComponent, PreviewGalleryComponent } from './edit/index';
+    EditSponsorComponent, EditGalleryPostComponent, EditNewsComponent, EditHomeComponent,
+    PreviewAboutComponent, PreviewEventsComponent, PreviewSponsorsComponent,
+    PreviewGalleryComponent, PreviewNewsComponent, PreviewHomeComponent } from './edit/index';
 
 // Routing
 import { AdminRoutingModule } from './admin-routing.module';
@@ -34,7 +35,11 @@ import { FileSelectDirective } from 'ng2-file-upload';
       PreviewAboutComponent,
       PreviewEventsComponent,
       PreviewGalleryComponent,
-      PreviewSponsorsComponent
+      PreviewSponsorsComponent,
+      EditNewsComponent,
+      PreviewNewsComponent,
+      EditHomeComponent,
+      PreviewHomeComponent
   ]
 })
 export class AdminModule { }

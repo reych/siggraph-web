@@ -1,0 +1,27 @@
+<div *ngIf="!isEdit()">
+
+    <h2 class="heading">Mission</h2>
+    <div class="thin-badge clearfix" *ngIf="mission">
+        <div>
+            <h3 class="left">{{mission.title}}</h3>
+        </div>
+        <div class="buttons right">
+            <button class="link-btn edit-btn"(click)="setEditMission(mission)">Edit</button>
+        </div>
+    </div>
+
+    <h2>Highlights</h2>
+    <button class="rounded-btn add-btn"(click)="setEditHighlight(null)">Add Highlight</button>
+    <ul class="plain-list">
+        <li class="thin-badge clearfix"*ngFor="let highlight of highlights">
+            <h3 class="left">{{highlight.title}}</h3>
+            <div class="buttons right">
+                <button class="link-btn edit-btn"(click)="setEditHighlight(highlight)">Edit</button>
+                <button class="link-btn delete-btn" (click)="deleteHighlight(highlight.id)">Delete</button>
+            </div>
+        </li>
+    </ul>
+
+</div>
+
+<edit-home class="cover" *ngIf="isEdit()" (close)="close($event)" [entry]="entryToEdit" [type]="editState"></edit-home>

@@ -48,7 +48,7 @@ var upload = multer({ storage: storage }).single('profile');
 
 /* -------------------------- [ About Routes ] ----------------------------- */
 // Get all entries from the About page.
-router.get('/all-entries', (req, res) => {
+router.get('/entries/all', (req, res) => {
     Entries.find({'type': ABOUT_TYPE}).exec()
     .then((data) => {
         console.log(data);
@@ -61,7 +61,7 @@ router.get('/all-entries', (req, res) => {
 });
 
 // Add an entry, each entry is an object.
-router.post('/add-entry', (req, res) => {
+router.post('/r/entry/add', (req, res) => {
     let newEntry = new entry(req.body.title, req.body.content, ABOUT_TYPE);
     Entries.create(newEntry, (err, entry) => {
         if(err) {
@@ -73,7 +73,7 @@ router.post('/add-entry', (req, res) => {
 });
 
 // Update an About entry.
-router.put('/update-entry', (req, res) => {
+router.put('/r/entry/update', (req, res) => {
     Entries.findOneAndUpdate({'id': req.body.id}, req.body).exec()
     .then((data) => {
         res.status(200).send(data);
@@ -85,7 +85,7 @@ router.put('/update-entry', (req, res) => {
 });
 
 // Get all people. Return array of Person JSONs.
-router.get('/all-people', (req, res) => {
+router.get('/people/all', (req, res) => {
     People.find().exec()
     .then((data) => {
         //console.log(data);
@@ -97,7 +97,7 @@ router.get('/all-people', (req, res) => {
 })
 
 // Add a person.
-router.post('/add-person', (req, res) => {
+router.post('/r/person/add', (req, res) => {
 
     let newPerson = new person(req.body.name, req.body.year, req.body.major,
         req.body.position, req.body.quote, req.body.imageURL);
@@ -111,7 +111,7 @@ router.post('/add-person', (req, res) => {
 })
 
 // Update a person.
-router.put('/update-person', (req, res) => {
+router.put('/r/person/update', (req, res) => {
     //let imageURL = uploadImage(req.body.imageURL);
     //req.body.imageURL = imageURL;
     People.findOneAndUpdate({'id': req.body.id}, req.body).exec()
@@ -123,16 +123,22 @@ router.put('/update-person', (req, res) => {
     })
 })
 
-router.delete('/person/delete/:id', (req, res) => {
+router.delete('/r/person/delete/:id', (req, res) => {
     People.findOneAndRemove({'id': req.params.id})
-    .then((data) => res.status(200).send(null))
+    .then((data) => {
+        if(data.imageURL != null) {
+            let path = '../../public/'+data.imageURL;
+            fs.unlinkSync(require.resolve(path));
+        }
+        res.status(200).send(null)
+    })
     .catch((err) => {
         res.status(400).send({error:err.message});
     })
 })
 
 // Upload an image and send back the filename.
-router.post('/image/upload', (req, res) => {
+router.post('/r/image/upload', (req, res) => {
     upload(req, res, function (err) {
         if (err) {
             console.log("Error uploading image...")
@@ -145,7 +151,7 @@ router.post('/image/upload', (req, res) => {
 })
 
 // Delete an image.
-router.delete('/image/delete/:id', (req, res) => {
+router.delete('/r/image/delete/:id', (req, res) => {
     // Delete existing profile picture.
     People.findOne({'id': req.params.id}).exec()
     .then((data) => {

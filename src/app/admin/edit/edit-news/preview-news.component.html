@@ -1,0 +1,18 @@
+<div *ngIf="!editArticle">
+    <h2>News</h2>
+    <button class="rounded-btn add-btn"(click)="setEditArticle(null)">Add Article</button>
+    <ul class="plain-list">
+        <li class="thin-badge clearfix"*ngFor="let article of news">
+            <div class="left">
+                <h3>{{article.title}}</h3>
+                <small>Updated: {{formatDate(article.updateTime)}}</small>
+            </div>
+            <div class="buttons right">
+                <button class="link-btn edit-btn"(click)="setEditArticle(article)">Edit</button>
+                <button class="link-btn delete-btn">Delete</button>
+            </div>
+        </li>
+    </ul>
+</div>
+
+<edit-news class="cover" *ngIf="editArticle" (close)="close($event)" [article]="articleToEdit"></edit-news>

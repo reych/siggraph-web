@@ -35,7 +35,7 @@ router.get('/all', (req, res) => {
 });
 
 // Add a sponsor.
-router.post('/add', (req, res) => {
+router.post('/r/add', (req, res) => {
     console.log("Post: Adding sponsor");
     let newSponsor = new sponsor(req.body.name, req.body.description, req.body.imagePath, req.body.link);
     Sponsors.create(newSponsor, (err, sponsor) => {
@@ -48,7 +48,7 @@ router.post('/add', (req, res) => {
 });
 
 // Update a sponsor.
-router.put('/update', (req, res) => {
+router.put('/r/update', (req, res) => {
     Sponsors.findOneAndUpdate({'id': req.body.id}, req.body).exec()
     .then((data) => {
         res.status(200).send(data);
@@ -59,7 +59,7 @@ router.put('/update', (req, res) => {
 });
 
 // Delete a sponsor.
-router.delete('/delete/:id', (req, res) => {
+router.delete('/r/delete/:id', (req, res) => {
     console.log(req.params);
     Sponsors.findOneAndRemove({'id': req.params.id})
     .then((data) => res.status(200).send(null))

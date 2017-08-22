@@ -13,7 +13,7 @@
                   <li [class.selected]="current === 'events'"><a routerLink="/events" (click)="select('events')">Events</a></li>
                   <li [class.selected]="current === 'sponsors'"><a routerLink="/sponsors" (click)="select('sponsors')">Sponsors</a></li>
                   <li [class.selected]="current === 'gallery'"><a routerLink="/gallery" (click)="select('gallery')">Gallery</a></li>
-                  <li><a href="#news">News</a></li>
+                  <li [class.selected]="current === 'news'"><a routerLink="/news" (click)="select('news')">News</a></li>
               </ul>
           </div>
       </div>

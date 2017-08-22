@@ -1,15 +1,17 @@
 <header class="clearfix">
     <h1 class="left">Admin</h1>
-    <button class="signout-btn right">Sign out</button>
+    <button class="signout-btn right" (click)="logout()">Sign out</button>
 </header>
 <div class="body-content clearfix">
     <aside class="left sidebar">
         <h3 class="title">Pages</h3>
         <ul class="plain-list">
+            <li><a routerLink="/edithome">Home</a></li>
             <li><a routerLink="/editabout">About</a></li>
             <li><a routerLink="/editevents">Events</a></li>
             <li><a routerLink="/editgallery">Gallery</a></li>
             <li><a routerLink="/editsponsors">Sponsors</a></li>
+            <li><a routerLink="/editnews">News</a></li>
         </ul>
     </aside>
     <div class="right main">

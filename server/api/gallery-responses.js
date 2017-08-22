@@ -48,7 +48,7 @@ router.get('/all', (req, res) => {
 })
 
 // Add a gallery post (Does not upload the image).
-router.post('/add', (req, res) => {
+router.post('/r/add', (req, res) => {
     let newGalleryPost = new galleryPost(req.body.title, req.body.eventName, req.body.date, req.body.caption, req.body.imageURL);
     GalleryPosts.create(newGalleryPost, (err, galleryPost) => {
         if (err) {
@@ -60,7 +60,7 @@ router.post('/add', (req, res) => {
 })
 
 // Upload image and create a GalleryPost object.
-router.post('/image/upload', (req, res) => {
+router.post('/r/image/upload', (req, res) => {
     upload(req, res, function (err) {
         if (err) {
             console.log("Error uploading image...")
@@ -73,7 +73,7 @@ router.post('/image/upload', (req, res) => {
 })
 
 // Update a gallery post (DOES NOT upload a new image).
-router.put('/update', (req, res) => {
+router.put('/r/update', (req, res) => {
     GalleryPosts.findOneAndUpdate({'id': req.body.id}, req.body).exec()
     .then((data) => {
         res.status(200).send(data);
@@ -84,7 +84,7 @@ router.put('/update', (req, res) => {
 });
 
 // Delete image with ID.
-router.delete('/delete/:id', (req, res) => {
+router.delete('/r/delete/:id', (req, res) => {
     // TODO: Delete image at imageURL from uploads too.
     // TODO: Does this _id really work?
     GalleryPosts.findOneAndRemove({'id': req.params.id})

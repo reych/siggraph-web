@@ -1,0 +1,44 @@
+<div class="clearfix">
+    <div class="right">
+        <button class="cancel-btn link-btn" (click)="closeWindow()">Cancel</button>
+        <button class="save-btn rounded-btn" (click)="save()">Save</button>
+    </div>
+    <div class="edit-box">
+        <h2>Edit Article</h2>
+        <div class="form-table">
+            <div class="row">
+                <label>Title:</label>
+                <input [(ngModel)]="article.title">
+            </div>
+            <div class="row">
+                <label>Author:</label>
+                <input [(ngModel)]="article.author">
+            </div>
+            <div class="row">
+                <div class="col-sm-4">
+                    <label>Content:</label>
+                </div>
+                <div class="col-sm-8">
+                    <textarea [(ngModel)]="article.content"></textarea>
+                </div>
+            </div>
+            <div class="row">
+                <label>External link:</label>
+                <input [(ngModel)]="article.link">
+            </div>
+            <!--
+            <div class="row" *ngIf="!article.imagePath">
+                <label>Image:</label>
+                <input type="file" name="article" ng2FileSelect [uploader]="uploader">
+            </div>
+
+            <div class="row" *ngIf="article.imagePath">
+                <img [src]="article.imagePath" class="thumbnail">
+                <p>{{person.imagePath}}</p>
+                <label>Change Image:</label>
+                <input type="file" name="article" ng2FileSelect [uploader]="uploader">
+            </div>
+        -->
+        </div>
+    </div>
+</div>
