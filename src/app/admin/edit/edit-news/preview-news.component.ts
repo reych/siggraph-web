@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 
 import { Article } from '../../../model/article';
 import { NewsService } from '../../../services/news.service';
-import { DateHelper } from '../../../utils/datehelper';
 
 @Component({
   selector: 'app-preview-news',
